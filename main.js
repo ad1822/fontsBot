@@ -7,6 +7,10 @@ console.log("==> Webpage to scrape: ", URL)
 const scrape = async () => {
   const browser = await puppeteer.launch({
     headless: "new",
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
     defaultViewport: { width: 1440, height: 900 }
   });
 
@@ -60,19 +64,19 @@ const scrape = async () => {
 
       items.push({
         text: text.slice(0, 120),
-        tag: el.tagName.toLowerCase(),
+        // tag: el.tagName.toLowerCase(),
 
         // font
         fontFamily: style.fontFamily.replace(/["']/g, ""),
         fontSize: style.fontSize,
         fontWeight: style.fontWeight,
-        lineHeight: style.lineHeight,
-        letterSpacing: style.letterSpacing,
+        // lineHeight: style.lineHeight,
+        // letterSpacing: style.letterSpacing,
         color: rgbToHex(style.color),
 
         // geometry for ordering
-        top: Math.round(rect.top),
-        left: Math.round(rect.left)
+        // top: Math.round(rect.top),
+        // left: Math.round(rect.left)
       });
     }
 
