@@ -15,7 +15,11 @@ const scrape = async () => {
   });
 
   const page = await browser.newPage();
-  await page.goto(URL, { waitUntil: "networkidle0" });
+  // await page.goto(URL, { waitUntil: "networkidle0" });
+  await page.goto(URL, {
+    waitUntil: "domcontentloaded",
+    timeout: 60000
+  });
 
   const rawData = await page.evaluate(() => {
     const rgbToHex = (rgb) => {
