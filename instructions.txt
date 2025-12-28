@@ -1,0 +1,8 @@
+1. To install packages:
+- npm install
+
+2. To run program: 
+- node run <link>
+
+3. You will find a file of data in your current folder after it will get scraped
+
